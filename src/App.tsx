@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { ListaOsob } from './osoby/Osoby';
+import { BazaOsob } from './osoby/Osoby';
 
 type Cwiczenie = {
   nazwa : string,
@@ -9,7 +11,7 @@ type Cwiczenie = {
 }
 
 /* Baza cwiczen */
- const cwiczenia: Cwiczenie[] = [
+ const BazaCwiczen : Cwiczenie[] = [
   { nazwa: 'Wyciskanie na lawce', partia: 'Klatka piersiowa', opis: 'Połóż się stabilnie, pionowo wypchnij sztangę' },
   { nazwa: 'Wyciskanie żołnierskie (OHP)', partia: 'Barki', opis: 'Stań prosto i wypchaj sztangę pionowo w górę' },
   { nazwa: 'Uginanie ramion z hantlami', partia: 'Bicepsy', opis: 'Zachowaj niezmienną, pionową pozycję ciała' },
@@ -38,8 +40,13 @@ function Cwiczenie({nazwa, partia, opis}: Cwiczenie){
 
 function ListaCwiczen(cwiczenia : Cwiczenie[]){
   return(
-    cwiczenia.map(cwiczenie =>
-      <div className='cwiczenie-item'>{Cwiczenie(cwiczenie)}</div>)
+    <div>
+      {cwiczenia.map(cwiczenie => (
+        <div className='cwiczenie-item' key={cwiczenie.nazwa}>
+          <Cwiczenie nazwa={cwiczenie.nazwa} partia={cwiczenie.partia} opis={cwiczenie.opis}/>
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -47,7 +54,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {ListaCwiczen(cwiczenia)}
+        <ListaOsob osoby={BazaOsob}/>
+        {ListaCwiczen(BazaCwiczen)}
       </header>
     </div>
   );
