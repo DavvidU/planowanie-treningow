@@ -1,4 +1,5 @@
 import React from "react";
+import banner from "./gym.png";
 import "./Home.css";
 
 function Home() {
@@ -24,7 +25,7 @@ function Home() {
         </ul>
       </div>
       <div className="image-section">
-        <img src="/src/gym.png"/>
+        <img src={banner} alt="banner"/>
       </div>
     </div>
   );
