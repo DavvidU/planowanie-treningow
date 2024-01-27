@@ -2,9 +2,10 @@ import React, { FormEvent, useEffect, useState } from "react";
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import {BazaOsob} from '../data/osobyData'
+import {BazaOsob} from '../data/osobyData';
 import { useNavigate  } from 'react-router-dom';
 import Service from "../Services/service";
+import './AddOsoba.css';
 
 type Osoby = {
     id?: number,
