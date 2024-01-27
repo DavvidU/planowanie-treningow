@@ -6,6 +6,7 @@ import Home from "../Home";
 import "./Navigation.css";
 import { StronaGlownaOsoby, SzczegolyOsoby } from "../osoby/Osoby";
 import { StronaGlownaCwiczenia } from "../cwiczenia/Cwiczenia";
+import AddPerson from "../osoby/AddOsoba";
 
 function Navigation() {
   return (
@@ -19,14 +20,16 @@ function Navigation() {
         <Nav.Link as={Link} to={"/tasklist"}>Task lista</Nav.Link>
         <Nav.Link as={Link} to={"/osoby"}>Osoby</Nav.Link>
         <Nav.Link as={Link} to={"/cwiczenia"}>Lista ćwiczeń</Nav.Link>
+        <Nav.Link as={Link} to={"/osoby/AddOsoba"}>Dodaj osobę</Nav.Link>
         </Nav>
       </Navbar>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/tasklist" element={<TaskList />} />
         <Route path="/osoby" element={<StronaGlownaOsoby/>} />
-        <Route path="/osoba/:imie_nazwisko" element={<SzczegolyOsoby />}/>
+        <Route path="/osoba/:id" element={<SzczegolyOsoby />}/>
         <Route path="/cwiczenia" element={<StronaGlownaCwiczenia/>} />
+        <Route path="/osoby/AddOsoba" element={<AddPerson/>} />
       </Routes>
     </Router>
   );

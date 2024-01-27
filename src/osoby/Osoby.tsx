@@ -7,21 +7,11 @@ import ListaOsob from './ListaOsob/ListaOsob';
 import OsobaSzczegoly from './OsobaSzczegoly/OsobaSzczegoly';
 import PasekWyszukiwania from '../PasekWyszukiwania/PasekWyszukiwania';
 
-
-/* type Osoba @@@@@@@@@@@@@@@@@*/
-
-/* Baza osob @@@@@@@@@@@@@@@@*/
-
-/* OsobaSczegoly @@@@@@@@@@@@@@@@@*/
-
-/* ListaOsob @@@@@@@@@@@@@@@@@*/
-
-/* PasekWyszukiwania @@@@@@@@@@@@@@@@@*/
-
   function StronaGlownaOsoby() {
     const [wprowadzonyTekst, setWprowadzonyTekst] = useState('');
     return(
-        <div>
+        <div className='container'>
+            <h2 className="person-list-header">Lista osób</h2>
             <PasekWyszukiwania wprowadzonyTekst ={wprowadzonyTekst} onWprowadzonyTekstChange={setWprowadzonyTekst}/>
             <ListaOsob osoby={BazaOsob} wprowadzonyTekst ={wprowadzonyTekst}/>
         </div>
@@ -29,14 +19,16 @@ import PasekWyszukiwania from '../PasekWyszukiwania/PasekWyszukiwania';
   }
 
   function SzczegolyOsoby() {
-    const { imie_nazwisko } = useParams<{ imie_nazwisko: string }>();
-    console.log(imie_nazwisko);
-    if (imie_nazwisko === undefined)
+    let { id } = useParams<{ id: string }>();
+    if (id === undefined)
         return(<p>Bledny parametr</p>);
-    const [osoba] = BazaOsob.filter(
-      (osoba) =>
-        `${osoba.firstName}_${osoba.lastName}` === imie_nazwisko
-    );
+    
+    let idNumber = parseInt(id, 10);
+    if (isNaN(idNumber)) {
+      return (<p>Błędny parametr</p>);
+  }
+    
+  const osoba = BazaOsob.find(os => os.id === idNumber);
   
     return (
       <div>

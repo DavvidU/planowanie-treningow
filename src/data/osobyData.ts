@@ -11,3 +11,16 @@ export const BazaOsob : Osoba[] = [
     { id: 7, firstName: 'John', lastName: 'Doe', height: 190, weight: 65, age: 26, gender: true, przeciwwskazania: '', trainingLevel: 'sredniozaawansowany', cel: 'utrzymanie' },
     { id: 8, firstName: 'Ala', lastName: 'Makota', height: 185, weight: 67, age: 32, gender: false, przeciwwskazania: 'Ćwiczy z kotem', trainingLevel: 'poczatkujacy', cel: 'masa' }
 ];
+
+export type Osoby = {
+    id: number,
+    firstName: string,
+    lastName: string,
+    height: number,
+    weight: number,
+    age: number,
+    gender: boolean,
+    przeciwwskazania: string,
+    trainingLevel: string,
+    cel: string
+};
