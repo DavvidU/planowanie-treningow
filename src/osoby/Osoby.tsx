@@ -30,14 +30,16 @@ import PasekWyszukiwania from '../PasekWyszukiwania/PasekWyszukiwania';
   }
 
   function SzczegolyOsoby() {
-    const { imie_nazwisko } = useParams<{ imie_nazwisko: string }>();
-    console.log(imie_nazwisko);
-    if (imie_nazwisko === undefined)
+    let { id } = useParams<{ id: string }>();
+    if (id === undefined)
         return(<p>Bledny parametr</p>);
-    const [osoba] = BazaOsob.filter(
-      (osoba) =>
-        `${osoba.firstName}_${osoba.lastName}` === imie_nazwisko
-    );
+    
+    let idNumber = parseInt(id, 10);
+    if (isNaN(idNumber)) {
+      return (<p>Błędny parametr</p>);
+  }
+    
+  const osoba = BazaOsob.find(os => os.id === idNumber);
   
     return (
       <div>

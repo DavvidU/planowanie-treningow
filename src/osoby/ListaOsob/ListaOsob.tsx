@@ -20,7 +20,7 @@ function ListaOsob({ osoby, wprowadzonyTekst } : ListaOsobProps & {wprowadzonyTe
         <div>
         {przefiltrowaneOsoby.map(osoba => (
         <div className='person-item' key={osoba.id}>
-            <Link to={`/osoba/${osoba.firstName}_${osoba.lastName}`}>
+            <Link to={`/osoba/${osoba.id}`}>
             {osoba.firstName} {osoba.lastName}
             </Link>
         </div>

@@ -25,7 +25,7 @@ function Navigation() {
         <Route path="/" element={<Home/>}/>
         <Route path="/tasklist" element={<TaskList />} />
         <Route path="/osoby" element={<StronaGlownaOsoby/>} />
-        <Route path="/osoba/:imie_nazwisko" element={<SzczegolyOsoby />}/>
+        <Route path="/osoba/:id" element={<SzczegolyOsoby />}/>
         <Route path="/cwiczenia" element={<StronaGlownaCwiczenia/>} />
       </Routes>
     </Router>
