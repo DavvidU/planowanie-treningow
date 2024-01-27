@@ -1,0 +1,37 @@
+.home-title {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .home-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .features-section {
+    text-align: left;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2em;
+  }
+  
+  .small-text {
+    font-size: 0.3em;
+  }
+  
+  .welcome-section,
+  .features-section,
+  .image-section {
+    margin-top: 20px;
+  }
+  
+  img {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 1px;
+  }
+  

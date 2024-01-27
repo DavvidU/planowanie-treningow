@@ -19,14 +19,14 @@
   
   .new-task-input {
     flex-grow: 1;
-    margin-left: 60%;
+    margin-left: 58%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
   
   .add-task-button {
-    padding: 7px 15px;
+    padding: 5px 15px;
     background-color: #4CAF50;
     color: white;
     border: none;
