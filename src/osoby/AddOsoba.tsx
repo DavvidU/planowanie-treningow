@@ -3,6 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import {BazaOsob} from '../data/osobyData'
+import { useNavigate  } from 'react-router-dom';
 import Service from "../Services/service";
 
 type Osoby = {
@@ -38,6 +39,7 @@ const AddPerson = () => {
         resolver: yupResolver(validatePerson),
     });
 
+    const navigate = useNavigate();
     const [nextId, setNextId] = useState<number>(0);
 
     useEffect(() => {
@@ -53,20 +55,24 @@ const AddPerson = () => {
     }, []);
 
     const onSubmit = (data: Osoby) => {
+        // Znajdowanie największego ID w obecnej bazie danych
+        const maxId = BazaOsob.length > 0 ? Math.max(...BazaOsob.map(o => o.id)) : 0;
+        const newId = maxId + 1;
+    
         const newPerson = {
             ...data,
-            id: nextId
+            id: newId
         };
     
-        Service.addPerson(newPerson)
-            .then(() => {
-                console.log('Osoba dodana:', newPerson);
-                setNextId(prevId => prevId + 1);
-            })
-            .catch((error: Error) => {
-                console.error('Błąd dodawania osoby:', error);
-            });
+        // Dodawanie nowej osoby do lokalnej bazy danych
+        BazaOsob.push(newPerson);
+        console.log('Osoba dodana:', newPerson);
+    
+        // Opcjonalnie: przekierowanie na stronę z listą osób
+        navigate('/osoby');
     };
+    
+   
   
     return (
         <div className="form-container">

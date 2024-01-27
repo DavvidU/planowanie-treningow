@@ -1,0 +1,68 @@
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .form-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .form-control.is-invalid {
+    border-color: #e63946;
+  }
+  
+  .invalid-feedback {
+    color: #e63946;
+    font-size: 0.85em;
+  }
+  
+  .addPersonForm > .form-group:last-child {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  input[type="button"], input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  input[type="button"] {
+    background-color: #6c757d;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  input[type="button"]:hover {
+    background-color: #545b62;
+  }

@@ -6,15 +6,15 @@ const getPerson = () => {
 };
 
 const addPerson = (data: Osoba) => {
-  return http.post<any>('/osoby/dodaj', data);
+  return http.post<any>("/osoba", data);
 };
 
 const editPerson = (data: Osoba, id: number) => {
-  return http.put<any>('/osoby/' + id, data);
+  return http.put<any>('/osoba/' + id, data);
 };
 
 const deletePerson = (id: number) => {
-  return http.delete<any>('/osoby/' + id);
+  return http.delete<any>('/osoba/' + id);
 };
 
 const Service = {
