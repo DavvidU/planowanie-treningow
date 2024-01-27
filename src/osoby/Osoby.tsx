@@ -21,7 +21,8 @@ import PasekWyszukiwania from '../PasekWyszukiwania/PasekWyszukiwania';
   function StronaGlownaOsoby() {
     const [wprowadzonyTekst, setWprowadzonyTekst] = useState('');
     return(
-        <div>
+        <div className='container'>
+            <h2 className="person-list-header">Lista osób</h2>
             <PasekWyszukiwania wprowadzonyTekst ={wprowadzonyTekst} onWprowadzonyTekstChange={setWprowadzonyTekst}/>
             <ListaOsob osoby={BazaOsob} wprowadzonyTekst ={wprowadzonyTekst}/>
         </div>

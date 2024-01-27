@@ -1,0 +1,23 @@
+.wybrane-cwiczenie {
+    background-color: #2a5e92;
+    color: #ecf0f1;
+    border: 1px solid #2c3e50;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .wybrane-cwiczenie h2 {
+    margin-bottom: 0.5em;
+    color: #f3bf12;
+  }
+  
+  .wybrane-cwiczenie p {
+    margin-bottom: 0.5em;
+  }
+  
+  .wybrane-cwiczenie p:first-of-type {
+    font-weight: bold;
+    color: #ecf0f1;
+  }

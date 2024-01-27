@@ -1,5 +1,6 @@
 import React from "react";
 import { Cwiczenie } from "../../models/models";
+import './CwiczenieSzczegoly.css';
 
 function CwiczenieSzczegoly({nazwa, partia, opis}: Cwiczenie){
     return(

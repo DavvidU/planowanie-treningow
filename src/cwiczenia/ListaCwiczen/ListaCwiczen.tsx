@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Cwiczenie } from "../../models/models";
 import CwiczenieSzczegoly from "../CwiczenieSzczegoly/CwiczenieSzczegoly";
+import './ListaCwiczen.css';
 
 type ListaCwiczenProps = {
     cwiczenia: Cwiczenie[];

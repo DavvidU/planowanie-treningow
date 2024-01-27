@@ -1,6 +1,7 @@
 import React from "react";
 import banner from "./gym.png";
 import "./Home.css";
+import gif from "./exercise.gif";
 
 function Home() {
   return (
@@ -21,11 +22,11 @@ function Home() {
           <li>Łatwy sposób dodawania i edycji informacji o podopiecznych.</li>
           <li>Przeglądanie planów treningowych podopiecznych.</li>
           <li>Tworzenie dedykowanych planów treningowych dla każdej osoby.</li>
-          <li>Lista zdań do śledzenia bieżących czynności z możliwością odhaczania wykonanych.</li>
+          <li>Lista zadań do śledzenia bieżących czynności z możliwością odhaczania wykonanych.</li>
         </ul>
       </div>
       <div className="image-section">
-        <img src={banner} alt="banner"/>
+        <img src={gif} alt="banner"/>
       </div>
     </div>
   );
