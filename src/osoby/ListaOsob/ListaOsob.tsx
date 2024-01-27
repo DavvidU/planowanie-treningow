@@ -9,7 +9,7 @@ type ListaOsobProps = {
 
 function ListaOsob({ osoby, wprowadzonyTekst } : ListaOsobProps & {wprowadzonyTekst : string}){
     let przefiltrowaneOsoby : Osoba[];
-    if (wprowadzonyTekst != ' ')
+    if (wprowadzonyTekst != '')
     {
         przefiltrowaneOsoby = osoby.filter((osoba) =>
         `${osoba.firstName} ${osoba.lastName}`.toLowerCase().includes(wprowadzonyTekst.toLowerCase()));

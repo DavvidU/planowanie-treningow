@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ListaCwiczen from './ListaCwiczen/ListaCwiczen';
 import { BazaCwiczen } from './../data/cwiczeniaData'
+import PasekWyszukiwania from '../PasekWyszukiwania/PasekWyszukiwania';
 
 /* type Cwiczenie @@@@@@@@@@@@@@@@@*/
 
@@ -22,8 +23,12 @@ import { BazaCwiczen } from './../data/cwiczeniaData'
   
 
   function StronaGlownaCwiczenia() {
+    const [wprowadzonyTekst, setWprowadzonyTekst] = useState('');
     return(
-        <ListaCwiczen cwiczenia={BazaCwiczen}/>
+      <div>
+          <PasekWyszukiwania wprowadzonyTekst ={wprowadzonyTekst} onWprowadzonyTekstChange={setWprowadzonyTekst}/>
+          <ListaCwiczen cwiczenia={BazaCwiczen} wprowadzonyTekst={wprowadzonyTekst}/>
+      </div>
     );
   }
 
