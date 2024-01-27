@@ -4,7 +4,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
 import Home from "../Home";
 import "./Navigation.css";
-import { StronaGlownaOsoby } from "../osoby/Osoby";
+import { StronaGlownaOsoby, SzczegolyOsoby } from "../osoby/Osoby";
 import { StronaGlownaCwiczenia } from "../cwiczenia/Cwiczenia";
 
 function Navigation() {
@@ -25,6 +25,7 @@ function Navigation() {
         <Route path="/" element={<Home/>}/>
         <Route path="/tasklist" element={<TaskList />} />
         <Route path="/osoby" element={<StronaGlownaOsoby/>} />
+        <Route path="/osoba/:imie_nazwisko" element={<SzczegolyOsoby />}/>
         <Route path="/cwiczenia" element={<StronaGlownaCwiczenia/>} />
       </Routes>
     </Router>

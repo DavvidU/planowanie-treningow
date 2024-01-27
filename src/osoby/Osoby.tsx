@@ -1,69 +1,49 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import './Osoby.css'
+import { Link, Route, useParams } from 'react-router-dom';
+import { Osoba } from '../models/models';
+import { BazaOsob } from '../data/osobyData';
+import ListaOsob from './ListaOsob/ListaOsob';
+import OsobaSzczegoly from './OsobaSzczegoly/OsobaSzczegoly';
+import PasekWyszukiwania from '../PasekWyszukiwania/PasekWyszukiwania';
 
-type Osoba = {
-    id: number,
-    firstName: string,
-    lastName: string,
-    height: number,
-    weight: number,
-    age: number,
-    gender: boolean,
-    przeciwwskazania: string,
-    trainingLevel: string,
-    cel: string,
-}
 
-/* Baza osob */
+/* type Osoba @@@@@@@@@@@@@@@@@*/
 
-const BazaOsob : Osoba[] = [
-    { id: 1, firstName: 'Jan', lastName: 'Kowalski', height: 180, weight: 70, age: 30, gender: true, przeciwwskazania: '', trainingLevel: 'sredniozaawansowany', cel: 'redukcja' },
-    { id: 2, firstName: 'Anna', lastName: 'Nowak', height: 160, weight: 55, age: 25, gender: false, przeciwwskazania: 'alergia', trainingLevel: 'zaawansowany', cel: 'wydolnosc' },
-    { id: 3, firstName: 'Jarosław', lastName: 'Natka', height: 172, weight: 90, age: 78, gender: true, przeciwwskazania: 'Nosi okulary', trainingLevel: 'poczatkujacy', cel: 'masa' },
-    { id: 4, firstName: 'Alfred', lastName: 'Konik', height: 161, weight: 88, age: 33, gender: true, przeciwwskazania: 'Kuleje na lewą noge', trainingLevel: 'sredniozaawansowany', cel: 'utrzymanie' },
-    { id: 5, firstName: 'Doniczka', lastName: 'Eucharystia', height: 199, weight: 84, age: 15, gender: false, przeciwwskazania: 'Kwitnie w niej kwiatek', trainingLevel: 'sredniozaawansowany', cel: 'masa' },
-    { id: 6, firstName: 'Krawat', lastName: 'Taboret', height: 154, weight: 79, age: 28, gender: true, przeciwwskazania: 'Paraliż od pasa w dół', trainingLevel: 'zaawansowany', cel: 'wydolnosc' },
-    { id: 7, firstName: 'John', lastName: 'Doe', height: 190, weight: 65, age: 26, gender: true, przeciwwskazania: '', trainingLevel: 'sredniozaawansowany', cel: 'utrzymanie' },
-    { id: 8, firstName: 'Ala', lastName: 'Makota', height: 185, weight: 67, age: 32, gender: false, przeciwwskazania: 'Ćwiczy z kotem', trainingLevel: 'poczatkujacy', cel: 'masa' }
-]
+/* Baza osob @@@@@@@@@@@@@@@@*/
 
-type ListaOsobProps = {
-    osoby: Osoba[];
-}
+/* OsobaSczegoly @@@@@@@@@@@@@@@@@*/
 
-/* Cwiczenie */
+/* ListaOsob @@@@@@@@@@@@@@@@@*/
 
-function OsobaSzczegoly({ firstName, lastName, height, weight, age, gender, przeciwwskazania, trainingLevel, cel }: Osoba) {
+/* PasekWyszukiwania @@@@@@@@@@@@@@@@@*/
+
+  function StronaGlownaOsoby() {
+    const [wprowadzonyTekst, setWprowadzonyTekst] = useState('');
+    return(
+        <div>
+            <PasekWyszukiwania wprowadzonyTekst ={wprowadzonyTekst} onWprowadzonyTekstChange={setWprowadzonyTekst}/>
+            <ListaOsob osoby={BazaOsob} wprowadzonyTekst ={wprowadzonyTekst}/>
+        </div>
+    );
+  }
+
+  function SzczegolyOsoby() {
+    const { imie_nazwisko } = useParams<{ imie_nazwisko: string }>();
+    console.log(imie_nazwisko);
+    if (imie_nazwisko === undefined)
+        return(<p>Bledny parametr</p>);
+    const [osoba] = BazaOsob.filter(
+      (osoba) =>
+        `${osoba.firstName}_${osoba.lastName}` === imie_nazwisko
+    );
+  
     return (
-      <div className="person-details">
-        <h2>{firstName} {lastName}</h2>
-        <p>Wiek: {age}</p>
-        <p>Płeć: {gender ? 'Mężczyzna' : 'Kobieta'}</p>
-        <p>Wzrost: {height} cm</p>
-        <p>Waga: {weight} kg</p>
-        <p>Przeciwwskazania: {przeciwwskazania}</p>
-        <p>Poziom treningu: {trainingLevel}</p>
-        <p>Cel treningu: {cel}</p>
+      <div>
+        <h2>Szczegóły osoby</h2>
+        {osoba ? <OsobaSzczegoly osoba={osoba} /> : <p>Nie znaleziono osoby</p>}
       </div>
     );
   }
 
-  function ListaOsob({ osoby } : ListaOsobProps){
-    return(
-        <div>
-        {osoby.map(osoba => (
-        <div className='person-item' key={osoba.id}>
-          {OsobaSzczegoly(osoba)}
-        </div>
-      ))}
-    </div>
-    );
-  }
-
-  function StronaGlownaOsoby() {
-    return(
-        <ListaOsob osoby={BazaOsob}/>
-    );
-  }
-
-export {ListaOsob, BazaOsob, StronaGlownaOsoby};
+export {ListaOsob, BazaOsob, StronaGlownaOsoby, SzczegolyOsoby};
