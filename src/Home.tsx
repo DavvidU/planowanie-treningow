@@ -1,6 +1,5 @@
 import React from "react";
 import "./Home.css";
-import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
 
 function Home() {
   return (

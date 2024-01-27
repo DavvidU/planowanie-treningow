@@ -60,4 +60,10 @@ function OsobaSzczegoly({ firstName, lastName, height, weight, age, gender, prze
     );
   }
 
-export {ListaOsob, BazaOsob};
+  function StronaGlownaOsoby() {
+    return(
+        <ListaOsob osoby={BazaOsob}/>
+    );
+  }
+
+export {ListaOsob, BazaOsob, StronaGlownaOsoby};
