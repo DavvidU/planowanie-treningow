@@ -1,4 +1,8 @@
 import React from 'react';
+import TaskList from './checklist/TaskList';
+import './checklist/TaskList.css';
+import Navigation from "./navigation/Navigation";
+import Home from './Home';
 import logo from './logo.svg';
 import './App.css';
 import { ListaOsob } from './osoby/Osoby';
@@ -53,10 +57,8 @@ function ListaCwiczen(cwiczenia : Cwiczenie[]){
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <ListaOsob osoby={BazaOsob}/>
-        {ListaCwiczen(BazaCwiczen)}
-      </header>
+      <h1 className="task-list-header">Panel Główny</h1>
+      <Navigation />
     </div>
   );
 }

@@ -1,42 +1,39 @@
-.App {
-  text-align: center;
+.app {
+  font-family: 'Arial', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.task-list {
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.task {
+  background-color: #eef;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.task-name {
+  margin-right: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+button {
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: #cfc;
+  border: none;
+  padding: 5px 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button:hover {
+  background-color: #afa;
 }
 
+.completed-tasks {
+  background-color: #cfc;
+  padding: 10px;
+}
 /* ----------Style cwiczen --------*/
 
 /* Cwiczenie */
