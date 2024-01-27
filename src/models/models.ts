@@ -10,3 +10,9 @@ export type Osoba = {
     trainingLevel: string,
     cel: string,
 }
+
+export type Cwiczenie = {
+    nazwa : string,
+    partia : string,
+    opis : string
+}

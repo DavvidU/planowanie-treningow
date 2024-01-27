@@ -10,4 +10,4 @@ export const BazaOsob : Osoba[] = [
     { id: 6, firstName: 'Froddo', lastName: 'Baggins', height: 154, weight: 79, age: 28, gender: true, przeciwwskazania: 'Paraliż od pasa w dół', trainingLevel: 'zaawansowany', cel: 'wydolnosc' },
     { id: 7, firstName: 'John', lastName: 'Doe', height: 190, weight: 65, age: 26, gender: true, przeciwwskazania: '', trainingLevel: 'sredniozaawansowany', cel: 'utrzymanie' },
     { id: 8, firstName: 'Ala', lastName: 'Makota', height: 185, weight: 67, age: 32, gender: false, przeciwwskazania: 'Ćwiczy z kotem', trainingLevel: 'poczatkujacy', cel: 'masa' }
-]
+];
