@@ -42,8 +42,8 @@ import PasekWyszukiwania from '../PasekWyszukiwania/PasekWyszukiwania';
   const osoba = BazaOsob.find(os => os.id === idNumber);
   
     return (
-      <div>
-        <h2>Szczegóły osoby</h2>
+      <div  className='container'>
+        <h2 className="person-list-header">Szczegóły osoby</h2>
         {osoba ? <OsobaSzczegoly osoba={osoba} /> : <p>Nie znaleziono osoby</p>}
       </div>
     );
