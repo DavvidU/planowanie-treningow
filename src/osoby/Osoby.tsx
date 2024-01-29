@@ -9,11 +9,21 @@ import PasekWyszukiwania from '../PasekWyszukiwania/PasekWyszukiwania';
 
   function StronaGlownaOsoby() {
     const [wprowadzonyTekst, setWprowadzonyTekst] = useState('');
+    const [persons, setPersons] = useState([] as Osoba[]);
+    const getAllPeoples = () => {
+      Service.getPerson()
+      .then((response: any) => {
+        setPersons(response.data)
+      })
+      .catch((e: Error) => {
+        console.log(e);
+      });
+    }
     return(
         <div className='container'>
             <h2 className="person-list-header">Lista osób</h2>
             <PasekWyszukiwania wprowadzonyTekst ={wprowadzonyTekst} onWprowadzonyTekstChange={setWprowadzonyTekst}/>
-            <ListaOsob osoby={BazaOsob} wprowadzonyTekst ={wprowadzonyTekst}/>
+            <ListaOsob osoby={osoba} wprowadzonyTekst ={wprowadzonyTekst}/>
         </div>
     );
   }

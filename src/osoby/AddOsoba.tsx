@@ -1,77 +1,54 @@
 import React, { FormEvent, useEffect, useState } from "react";
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import {BazaOsob} from '../data/osobyData';
-import { useNavigate  } from 'react-router-dom';
+import { Osoba } from '../models/models';
 import Service from "../Services/service";
 import './AddOsoba.css';
 
 type Osoby = {
-    id?: number,
-    firstName: string;
-    lastName: string;
-    height: number;
-    weight: number;
-    age: number;
-    gender: boolean;
-    przeciwwskazania: string;
-    trainingLevel: string;
-    cel: string;
-  };
+  id?: number,
+  firstName: string,
+  lastName: string,
+  height: number,
+  weight: number,
+  age: number,
+  gender: boolean,
+  przeciwwskazania: string,
+  trainingLevel: string,
+  cel: string,
+}
 
-const validatePerson = Yup.object().shape(
-    {
-        id: Yup.number().optional(),
-        firstName: Yup.string().required("Pole jest wymagane"),
-        lastName: Yup.string().required("Pole jest wymagane"),
-        height: Yup.number().required("Pole jest wymagane").positive('Należy wybrać liczbę z zakresu x - y').min(120,"Za mała liczba").max(220,'Za duża liczba'),
-        weight: Yup.number().required("Pole jest wymagane").positive('Należy wybrać liczbę z zakresu x - y').min(40,"Za mała liczba").max(160,'Za duża liczba'),
-        age: Yup.number().required("Pole jest wymagane").positive('Należy wybrać liczbę z zakresu x - y'),
-        gender: Yup.bool().required('Pole jest wymagane'),
-        przeciwwskazania: Yup.string().required("Pole jest wymagane - jeśli nie masz żadnych wpisz 'brak'"),
-        trainingLevel: Yup.string().required("Pole jest wymagane"),
-        cel: Yup.string().required("Pole jest wymagane"),
-    }
-)
+// Definicja walidacji
+const validatePerson = Yup.object().shape({
+  // Zgodnie z definicją Osoby
+  id: Yup.number().optional(),
+  firstName: Yup.string().required("Pole jest wymagane"),
+  lastName: Yup.string().required("Pole jest wymagane"),
+  height: Yup.number().required("Pole jest wymagane").positive('Należy wybrać liczbę z zakresu x - y').min(120,"Za mała liczba").max(220,'Za duża liczba'),
+  weight: Yup.number().required("Pole jest wymagane").positive('Należy wybrać liczbę z zakresu x - y').min(40,"Za mała liczba").max(160,'Za duża liczba'),
+  age: Yup.number().required("Pole jest wymagane").positive('Należy wybrać liczbę z zakresu x - y'),
+  gender: Yup.bool().required('Pole jest wymagane'),
+  przeciwwskazania: Yup.string().required("Pole jest wymagane - jeśli nie masz żadnych wpisz 'brak'"),
+  trainingLevel: Yup.string().required("Pole jest wymagane"),
+  cel: Yup.string().required("Pole jest wymagane"),
+});
 
 const AddPerson = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<Osoby>({
-        resolver: yupResolver(validatePerson),
-    });
+  const { register, handleSubmit, formState: { errors } } = useForm<{ id?: number | undefined; firstName: string; lastName: string; height: number; weight: number; age: number; gender: NonNullable<boolean | undefined>; przeciwwskazania: string; trainingLevel: string; cel: string; }>({
+      resolver: yupResolver(validatePerson),
+  });
 
-    const navigate = useNavigate();
-    const [nextId, setNextId] = useState<number>(0);
-
-    useEffect(() => {
-        Service.getPerson()
-            .then(response => {
-                const maxId = response.data.reduce((max, person) => person.id > max ? person.id : max, 0);
-                setNextId(maxId + 1);
-            })
-            .catch(error => {
-                console.error("Błąd ładowania osób:", error);
-                setNextId(1);
-            });
-    }, []);
-
-    const onSubmit = (data: Osoby) => {
-        // Znajdowanie największego ID w obecnej bazie danych
-        const maxId = BazaOsob.length > 0 ? Math.max(...BazaOsob.map(o => o.id)) : 0;
-        const newId = maxId + 1;
-    
-        const newPerson = {
-            ...data,
-            id: newId
-        };
-    
-        // Dodawanie nowej osoby do lokalnej bazy danych
-        BazaOsob.push(newPerson);
-        console.log('Osoba dodana:', newPerson);
-    
+  const onSubmit = (data: { id?: number | undefined; firstName: string; lastName: string; height: number; weight: number; age: number; gender: NonNullable<boolean | undefined>; przeciwwskazania: string; trainingLevel: string; cel: string; }) => {
+    Service.addPerson(data)
+      .then(response => {
+        console.log('Osoba dodana:', response.data);
         // Opcjonalnie: przekierowanie na stronę z listą osób
-        navigate('/osoby');
-    };
+      })
+      .catch(error => {
+        console.error('Błąd dodawania osoby:', error);
+      });
+  };
     
    
   
