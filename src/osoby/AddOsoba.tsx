@@ -20,20 +20,37 @@ type Osoby = {
     cel: string;
   };
 
-const validatePerson = Yup.object().shape(
-    {
-        id: Yup.number().optional(),
-        firstName: Yup.string().required("Pole jest wymagane"),
-        lastName: Yup.string().required("Pole jest wymagane"),
-        height: Yup.number().required("Pole jest wymagane").positive('Należy wybrać liczbę z zakresu x - y').min(120,"Za mała liczba").max(220,'Za duża liczba'),
-        weight: Yup.number().required("Pole jest wymagane").positive('Należy wybrać liczbę z zakresu x - y').min(40,"Za mała liczba").max(160,'Za duża liczba'),
-        age: Yup.number().required("Pole jest wymagane").positive('Należy wybrać liczbę z zakresu x - y'),
-        gender: Yup.bool().required('Pole jest wymagane'),
-        przeciwwskazania: Yup.string().required("Pole jest wymagane - jeśli nie masz żadnych wpisz 'brak'"),
-        trainingLevel: Yup.string().required("Pole jest wymagane"),
-        cel: Yup.string().required("Pole jest wymagane"),
-    }
-)
+  const validatePerson = Yup.object().shape({
+    id: Yup.number().optional(),
+    firstName: Yup.string()
+      .required("Imię jest wymagane."),
+    lastName: Yup.string()
+      .required("Nazwisko jest wymagane."),
+      height: Yup.number()
+      .typeError("Wzrost musi być liczbą.")
+      .required("Pole jest wymagane")
+      .positive("Wzrost musi być liczbą dodatnią.")
+      .min(120, "Wzrost musi być większy niż 120 cm.")
+      .max(220, "Wzrost musi być mniejszy niż 220 cm."),
+    weight: Yup.number()
+      .typeError("Waga musi być liczbą.")
+      .required("Pole jest wymagane")
+      .positive("Waga musi być liczbą dodatnią.")
+      .min(40, "Waga musi być większa niż 40 kg.")
+      .max(160, "Waga musi być mniejsza niż 160 kg."),
+    age: Yup.number()
+      .typeError("Wiek musi być liczbą.")
+      .required("Pole jest wymagane")
+      .positive("Wiek musi być liczbą dodatnią."),
+    gender: Yup.bool()
+      .required("Płeć jest wymagana."),
+    przeciwwskazania: Yup.string()
+      .required("Przeciwwskazania są wymagane - jeśli nie masz żadnych wpisz 'brak'."),
+    trainingLevel: Yup.string()
+      .required("Poziom treningu jest wymagany."),
+    cel: Yup.string()
+      .required("Cel jest wymagany.")
+  });
 
 const AddPerson = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<Osoby>({
@@ -56,7 +73,6 @@ const AddPerson = () => {
     }, []);
 
     const onSubmit = (data: Osoby) => {
-        // Znajdowanie największego ID w obecnej bazie danych
         const maxId = BazaOsob.length > 0 ? Math.max(...BazaOsob.map(o => o.id)) : 0;
         const newId = maxId + 1;
     
@@ -65,11 +81,8 @@ const AddPerson = () => {
             id: newId
         };
     
-        // Dodawanie nowej osoby do lokalnej bazy danych
         BazaOsob.push(newPerson);
         console.log('Osoba dodana:', newPerson);
-    
-        // Opcjonalnie: przekierowanie na stronę z listą osób
         navigate('/osoby');
     };
     
