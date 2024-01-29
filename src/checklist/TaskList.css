@@ -3,6 +3,7 @@
     width: 40%;
     margin: 20px auto;
     padding: 10px;
+    color: #333;
   }
   
   .task-list-header {
@@ -19,7 +20,7 @@
   
   .new-task-input {
     flex-grow: 1;
-    margin-left: 58%;
+    margin-left: 40%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;

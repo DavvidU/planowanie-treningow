@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './TaskList.css';
 interface Task {
     id: number;
@@ -7,6 +7,9 @@ interface Task {
   }
   
   const TaskList: React.FC = () => {
+    useEffect(() => {
+      document.title = 'TaskList - Planowanie Treningow';
+  }, []);
     const [tasks, setTasks] = useState<Task[]>([]);
     const [newTaskName, setNewTaskName] = useState('');
   

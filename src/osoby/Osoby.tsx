@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import './Osoby.css'
 import { Link, Route, useParams } from 'react-router-dom';
 import { Osoba } from '../models/models';
@@ -8,6 +8,9 @@ import OsobaSzczegoly from './OsobaSzczegoly/OsobaSzczegoly';
 import PasekWyszukiwania from '../PasekWyszukiwania/PasekWyszukiwania';
 
   function StronaGlownaOsoby() {
+    useEffect(() => {
+      document.title = 'Osoby - Planowanie Treningow';
+  }, []);
     const [wprowadzonyTekst, setWprowadzonyTekst] = useState('');
     return(
         <div className='container'>
@@ -31,8 +34,8 @@ import PasekWyszukiwania from '../PasekWyszukiwania/PasekWyszukiwania';
   const osoba = BazaOsob.find(os => os.id === idNumber);
   
     return (
-      <div>
-        <h2>Szczegóły osoby</h2>
+      <div  className='container'>
+        <h2 className="person-list-header">Szczegóły osoby</h2>
         {osoba ? <OsobaSzczegoly osoba={osoba} /> : <p>Nie znaleziono osoby</p>}
       </div>
     );

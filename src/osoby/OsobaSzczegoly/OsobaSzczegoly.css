@@ -48,5 +48,6 @@
 
   .cwiczenia-osoby {
     display: flex;
-    justify-content: space-around;
+    justify-content :space-between;
+    color:#333;
   }

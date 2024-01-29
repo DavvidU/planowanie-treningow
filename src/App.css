@@ -1,3 +1,25 @@
+body {
+  background: linear-gradient(to right, #b3d1ff, #f3e6d9, #d9d1f3);
+}
+
+.osoba-item:hover {
+    color: rgb(255, 132, 0);
+    cursor: pointer;
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+input.ng-invalid {
+  border-color: red;
+}
+select.ng-invalid {
+  border-color: red;
+}
+  .cwiczenie-item:hover {
+    color: rgb(255, 132, 0);
+    cursor: pointer;
+  }
+
 .app {
   font-family: 'Arial', sans-serif;
 }
@@ -21,9 +43,10 @@
 button {
   margin-right: 10px;
   cursor: pointer;
-  background-color: #cfc;
+  background-color: rgb(36, 232, 216);
   border: none;
   padding: 5px 10px;
+  border-radius: 13px;
 }
 
 button:hover {
@@ -34,55 +57,4 @@ button:hover {
   background-color: #cfc;
   padding: 10px;
 }
-/* ----------Style cwiczen --------*/
 
-/* Cwiczenie */
-
-.wybrane-cwiczenie {
-  background-color: #2a5e92;
-  color: #ecf0f1;
-  border: 1px solid #2c3e50;
-  border-radius: 4px;
-  padding: 20px;
-  margin-top: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.wybrane-cwiczenie h2 {
-  margin-bottom: 0.5em;
-  color: #f3bf12;
-}
-
-.wybrane-cwiczenie p {
-  margin-bottom: 0.5em;
-}
-
-.wybrane-cwiczenie p:first-of-type {
-  font-weight: bold;
-  color: #ecf0f1;
-}
-
-/* Lista cwiczen */
-
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #1c2833;
-  color: #ecf0f1;
-  margin: 0;
-  padding: 20px;
-}
-
-.cwiczenie-item {
-  background-color: #2c3e50;
-  color: #ecf0f1;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s, box-shadow 0.2s;
-}
-
-.cwiczenie-item:hover {
-  background-color: #34495e;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
