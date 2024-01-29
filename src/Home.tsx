@@ -2,6 +2,7 @@ import React from "react";
 import banner from "./gym.png";
 import "./Home.css";
 import gif from "./exercise.gif";
+import MotywacyjnyPrzycisk from './MotywacyjnyPrzycisk/MotywacyjnyPrzycisk';
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
           Planer Ćwiczeń jest narzędziem stworzonym specjalnie dla trenerów, które pomaga w
           zarządzaniu planem treningowym swoich podopiecznych.
         </p>
+        <MotywacyjnyPrzycisk />
       </div>
       <div className="features-section">
         <h2 className="fc-title">Funkcjonalności:</h2>
