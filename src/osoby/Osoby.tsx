@@ -7,17 +7,6 @@ import ListaOsob from './ListaOsob/ListaOsob';
 import OsobaSzczegoly from './OsobaSzczegoly/OsobaSzczegoly';
 import PasekWyszukiwania from '../PasekWyszukiwania/PasekWyszukiwania';
 
-
-/* type Osoba @@@@@@@@@@@@@@@@@*/
-
-/* Baza osob @@@@@@@@@@@@@@@@*/
-
-/* OsobaSczegoly @@@@@@@@@@@@@@@@@*/
-
-/* ListaOsob @@@@@@@@@@@@@@@@@*/
-
-/* PasekWyszukiwania @@@@@@@@@@@@@@@@@*/
-
   function StronaGlownaOsoby() {
     useEffect(() => {
       document.title = 'Osoby - Planowanie Treningow';
