@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import banner from "./gym.png";
 import "./Home.css";
 import gif from "./exercise.gif";
 import MotywacyjnyPrzycisk from './MotywacyjnyPrzycisk/MotywacyjnyPrzycisk';
 
 function Home() {
+  useEffect(() => {
+    document.title = 'Home - Planowanie Treningow';
+}, []);
   return (
     <div className="home-container">
       <h1 className="home-title">

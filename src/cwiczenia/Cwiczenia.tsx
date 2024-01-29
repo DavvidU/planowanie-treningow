@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ListaCwiczen from './ListaCwiczen/ListaCwiczen';
 import { BazaCwiczen } from './../data/cwiczeniaData'
 import PasekWyszukiwania from '../PasekWyszukiwania/PasekWyszukiwania';
@@ -23,6 +23,9 @@ import PasekWyszukiwania from '../PasekWyszukiwania/PasekWyszukiwania';
   
 
   function StronaGlownaCwiczenia() {
+    useEffect(() => {
+      document.title = 'Cwiczenia - Planowanie Treningow';
+  }, []);
     const [wprowadzonyTekst, setWprowadzonyTekst] = useState('');
     return(
       <div>

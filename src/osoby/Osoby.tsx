@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import './Osoby.css'
 import { Link, Route, useParams } from 'react-router-dom';
 import { Osoba } from '../models/models';
@@ -19,6 +19,9 @@ import PasekWyszukiwania from '../PasekWyszukiwania/PasekWyszukiwania';
 /* PasekWyszukiwania @@@@@@@@@@@@@@@@@*/
 
   function StronaGlownaOsoby() {
+    useEffect(() => {
+      document.title = 'Osoby - Planowanie Treningow';
+  }, []);
     const [wprowadzonyTekst, setWprowadzonyTekst] = useState('');
     return(
         <div className='container'>

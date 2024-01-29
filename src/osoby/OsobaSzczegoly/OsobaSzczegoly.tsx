@@ -1,5 +1,5 @@
 import { Cwiczenie, Osoba } from "../../models/models";
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import './OsobaSzczegoly.css'
 import TaskList from "../../checklist/TaskList";
 import { StronaGlownaCwiczenia } from "../../cwiczenia/Cwiczenia";
@@ -11,6 +11,10 @@ function OsobaSzczegoly({ osoba }: { osoba : Osoba }) {
   let cwiczeniaUpperBody : Cwiczenie[] = GetCwiczeniaDzienUpperBody(osoba);
   let cwiczeniaBrzucha : Cwiczenie[] = GetCwiczeniaDzienBrzucha(osoba);
   let cwiczeniaLowerBody : Cwiczenie[] = GetCwiczeniaDzienLowerBody(osoba);
+
+  useEffect(() => {
+    document.title = 'Szczegoly osoby - Planowanie Treningow';
+}, []);
 
     return (
       <div className="container">
